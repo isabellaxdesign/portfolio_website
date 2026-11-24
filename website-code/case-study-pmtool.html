@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Planner Redesign: Collective Next · Isa Montes Diaz, Senior Designer &amp; Strategist</title>
+  <meta name="description" content="Redesigning a busy internal PM tool into a clean, dual-audience experience, while learning what AI actually needs to execute great design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #4BBFB8;
+      --teal-dark:  #2A8C86;
+      --teal-light: #D6F2F0;
+      --olive:      #9A9A6A;
+      --olive-light:#EEEEDD;
+      --cream:      #F5F4EF;
+      --cream-dark: #EAE9E2;
+      --charcoal:   #2C2C2C;
+      --mid:        #5A5A5A;
+      --soft:       #9A9A9A;
+      --white:      #FFFFFF;
+      --radius:     12px;
+      --radius-lg:  20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(245, 244, 239, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(75,191,184,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal-dark); }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 100px !important;
+      font-weight: 500 !important;
+    }
+
+    /* ── HERO ── */
+    .case-hero {
+      padding: 8rem 4rem 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--soft);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--teal-dark); }
+    .back-link::before { content: '←'; }
+
+    .wip-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #FFF3DC;
+      color: #A06B00;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.875rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .wip-dot {
+      width: 6px;
+      height: 6px;
+      background: #E89500;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .case-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      max-width: 800px;
+    }
+
+    h1 em { font-style: italic; color: var(--teal-dark); }
+
+    .case-tagline {
+      font-size: 1.1rem;
+      color: var(--mid);
+      max-width: 600px;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .meta-pill {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.75rem 1.25rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+      min-width: 120px;
+    }
+
+    .meta-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .meta-value {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 6rem;
+      box-shadow: 0 24px 64px rgba(44,44,44,0.1);
+    }
+
+    .hero-image img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 560px;
+    }
+
+    /* ── CONTENT ── */
+    .case-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem 8rem;
+    }
+
+    .case-section {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 4rem;
+      padding: 4rem 0;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .case-section:first-of-type { border-top: none; padding-top: 0; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      padding-top: 0.25rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .case-body p {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .case-body p strong { color: var(--charcoal); font-weight: 500; }
+    .case-body p:last-child { margin-bottom: 0; }
+
+    /* ── AUDIENCE CARDS ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .audience-card {
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+    }
+
+    .audience-card.primary { border-color: rgba(75,191,184,0.4); }
+
+    .audience-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .audience-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .audience-needs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .audience-needs li {
+      font-size: 0.8rem;
+      color: var(--mid);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .audience-needs li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* ── BEFORE / AFTER ── */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .ba-card {
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+    }
+
+    .ba-card.before { background: var(--cream-dark); }
+
+    .ba-card.after {
+      background: var(--teal-light);
+      border-color: rgba(75,191,184,0.3);
+    }
+
+    .ba-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .ba-card.after .ba-label { color: var(--teal-dark); }
+
+    .ba-item {
+      font-size: 0.875rem;
+      color: var(--mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(44,44,44,0.06);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ba-card.after .ba-item { color: var(--charcoal); }
+    .ba-item:last-child { border-bottom: none; }
+    .ba-item::before { content: '—'; color: var(--soft); flex-shrink: 0; }
+    .ba-card.after .ba-item::before { content: '✓'; color: var(--teal-dark); }
+
+    /* ── INSIGHT CARD ── */
+    .insight-card {
+      background: var(--charcoal);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.5rem;
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .insight-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+
+    .insight-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .insight-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── IMAGE GRID ── */
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--cream-dark);
+    }
+
+    .image-grid .span-2 { grid-column: 1 / -1; }
+
+    .img-caption {
+      font-size: 0.75rem;
+      color: var(--soft);
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* ── STATUS CARD ── */
+    .status-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--cream-dark);
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .status-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-header h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .status-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-dot.done { background: var(--teal); }
+    .status-dot.progress { background: #E89500; }
+    .status-dot.upcoming { background: var(--cream-dark); border: 2px solid var(--soft); }
+
+    .status-item-label { color: var(--charcoal); flex: 1; }
+    .status-item-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    .tag-done { background: var(--teal-light); color: var(--teal-dark); }
+    .tag-progress { background: #FFF3DC; color: #A06B00; }
+    .tag-upcoming { background: var(--cream-dark); color: var(--soft); }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      background: var(--white);
+      border-top: 1px solid var(--cream-dark);
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .next-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 1rem;
+    }
+
+    .next-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 0.875rem 2rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      .case-hero { padding: 7rem 1.5rem 0; }
+      .case-content { padding: 0 1.5rem 6rem; }
+      .case-section { grid-template-columns: 1fr; gap: 1rem; }
+      .before-after, .audience-grid, .image-grid { grid-template-columns: 1fr; }
+      .next-project { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">Isa Montes Diaz</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="experiments.html">AI & Experiments</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Say hello</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <a href="index.html" class="back-link">Back to work</a>
+    <div class="wip-banner"><span class="wip-dot"></span> Currently in progress</div>
+    <p class="case-eyebrow">Case Study · Collective Next</p>
+    <h1>Cutting through the noise of a <em>super busy</em> PM tool.</h1>
+    <p class="case-tagline">A vibe-coded internal tool with a real UX problem: too much information, not enough clarity. Redesigning it to serve two audiences without overwhelming either one.</p>
+
+    <div class="meta-row">
+      <div class="meta-pill">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">Collective Next (Internal)</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Status</span>
+        <span class="meta-value">In Progress</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">My Role</span>
+        <span class="meta-value">UX Design, Figma</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Tools</span>
+        <span class="meta-value">Figma, Replit AI</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Users</span>
+        <span class="meta-value">PMs + Clients</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="case-hero">
+    <div class="hero-image">
+      <!--
+        REPLACE with a side-by-side before/after if you can,
+        or just the before state: assets/pmtool-before.png
+      -->
+      <img
+        src="assets/pmtool-before.jpg"
+        alt="PM Tool before and after redesign"
+      />
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="case-content">
+
+    <!-- THE PROBLEM -->
+    <div class="case-section fade-up">
+      <p class="section-label">The Problem</p>
+      <div class="case-body">
+        <h2>A tool built fast, with a design that shows it.</h2>
+        <p>The Collective Next Project Planner was vibe-coded, built quickly with AI to solve a real operational need. It works. But the design is <strong>super busy</strong>, and the information architecture doesn't reflect how PMs actually think about projects at a high level.</p>
+        <p>The core challenge: the tool has <strong>two distinct audiences</strong> with different needs. Internal PMs need a command center. Clients receiving project timeline links need clarity and confidence, not a wall of data.</p>
+
+        <div class="audience-grid">
+          <div class="audience-card primary">
+            <div class="audience-icon">🗂️</div>
+            <p class="audience-title">Internal PMs</p>
+            <ul class="audience-needs">
+              <li>Bird's-eye view of all projects</li>
+              <li>Task status at a glance</li>
+              <li>Team availability and assignments</li>
+              <li>Stage gates and deadlines</li>
+            </ul>
+          </div>
+          <div class="audience-card">
+            <div class="audience-icon">🔗</div>
+            <p class="audience-title">Client-facing links</p>
+            <ul class="audience-needs">
+              <li>Project timeline clarity</li>
+              <li>Progress without internal noise</li>
+              <li>Clean, trustworthy presentation</li>
+              <li>No login required</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BEFORE / AFTER -->
+    <div class="case-section fade-up">
+      <p class="section-label">Before & After</p>
+      <div class="case-body">
+        <h2>Same information. Way less noise.</h2>
+        <p>The original design surfaces everything at once: every task, every detail, every status. The redesign is about <strong>synthesizing what matters at the bird's-eye view</strong> and letting PMs drill down when they need to.</p>
+
+        <div class="before-after">
+          <div class="ba-card before">
+            <p class="ba-label">Before</p>
+            <div class="ba-item">Information overload at every level</div>
+            <div class="ba-item">No clear visual hierarchy</div>
+            <div class="ba-item">Same view for all user types</div>
+            <div class="ba-item">Busy, dense layout</div>
+          </div>
+          <div class="ba-card after">
+            <p class="ba-label">After (in progress)</p>
+            <div class="ba-item">Synthesized bird's-eye dashboard</div>
+            <div class="ba-item">Clear hierarchy, glanceable then drillable</div>
+            <div class="ba-item">Separate views for PMs vs clients</div>
+            <div class="ba-item">Clean, focused layout</div>
+          </div>
+        </div>
+
+        <div class="image-grid" style="margin-top: 1.5rem;">
+          <!--
+            REPLACE:
+            assets/pmtool-before.png → Image 1 (the original project planner)
+            assets/pmtool-after.png  → Image 2 (your Figma redesign dashboard)
+          -->
+          <div>
+            <img
+              src="assets/pmtool-before.jpg"
+              alt="Original PM tool before state"
+            />
+            <p class="img-caption">Before: original tool</p>
+          </div>
+          <div>
+            <img
+              src="assets/pmtool-after.jpg"
+              alt="Redesigned PM tool dashboard after state"
+            />
+            <p class="img-caption">After: redesigned dashboard (in progress)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY INSIGHT -->
+    <div class="case-section fade-up">
+      <p class="section-label">Key Insight</p>
+      <div class="case-body">
+        <h2>What I learned about designing with AI.</h2>
+        <p>This project taught me something I hadn't fully articulated before: <strong>AI needs to be briefed like a junior designer, not a search engine.</strong> The quality of a Figma implementation via AI is entirely dependent on how well you've specified the design intent upfront.</p>
+        <p>Understanding what MCP servers need to execute a Figma design (the constraints, the component logic, the naming conventions) changed how I think about design handoff entirely. Not just for AI, but for human engineers too.</p>
+
+        <div class="insight-card">
+          <span class="insight-icon">💡</span>
+          <div>
+            <p class="insight-label">The unlock</p>
+            <p class="insight-text">"The better you understand what AI needs to execute your design, the better your design specs become, for AI and humans alike."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATUS -->
+    <div class="case-section fade-up">
+      <p class="section-label">Current Status</p>
+      <div class="case-body">
+        <h2>Dashboard done. Aggregate view next.</h2>
+        <p>This is a living project and I'm actively designing and implementing it alongside my day-to-day work. Here's where things stand:</p>
+
+        <div class="status-card">
+          <div class="status-header">
+            <div class="wip-banner" style="margin-bottom: 0;"><span class="wip-dot"></span>In progress</div>
+            <h3>Project Planner Redesign</h3>
+          </div>
+          <div class="status-items">
+            <div class="status-item">
+              <div class="status-dot done"></div>
+              <span class="status-item-label">Project dashboard state: Figma</span>
+              <span class="status-item-tag tag-done">Done</span>
+            </div>
+            <div class="status-item">
+              <div class="status-dot progress"></div>
+              <span class="status-item-label">Aggregate project view: Figma</span>
+              <span class="status-item-tag tag-progress">In progress</span>
+            </div>
+            <div class="status-item">
+              <div class="status-dot upcoming"></div>
+              <span class="status-item-label">Client-facing timeline view</span>
+              <span class="status-item-tag tag-upcoming">Up next</span>
+            </div>
+            <div class="status-item">
+              <div class="status-dot upcoming"></div>
+              <span class="status-item-label">Implementation in Replit</span>
+              <span class="status-item-tag tag-upcoming">Up next</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

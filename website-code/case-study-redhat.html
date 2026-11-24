@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive Microsites: Red Hat · Isa Montes Diaz, Senior Designer &amp; Strategist</title>
+  <meta name="description" content="How one smart WordPress template replaced 150+ duplicate PDFs and tripled the scale of Red Hat's executive experience program." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #4BBFB8;
+      --teal-dark:  #2A8C86;
+      --teal-light: #D6F2F0;
+      --olive:      #9A9A6A;
+      --olive-light:#EEEEDD;
+      --cream:      #F5F4EF;
+      --cream-dark: #EAE9E2;
+      --charcoal:   #2C2C2C;
+      --mid:        #5A5A5A;
+      --soft:       #9A9A9A;
+      --white:      #FFFFFF;
+      --radius:     12px;
+      --radius-lg:  20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(245, 244, 239, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(75,191,184,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal-dark); }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 100px !important;
+      font-weight: 500 !important;
+    }
+
+    /* ── HERO ── */
+    .case-hero {
+      padding: 8rem 4rem 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--soft);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--teal-dark); }
+    .back-link::before { content: '←'; }
+
+    .case-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      max-width: 800px;
+    }
+
+    h1 em { font-style: italic; color: var(--teal-dark); }
+
+    .case-tagline {
+      font-size: 1.1rem;
+      color: var(--mid);
+      max-width: 600px;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .meta-pill {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.75rem 1.25rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+      min-width: 120px;
+    }
+
+    .meta-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .meta-value {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 6rem;
+      box-shadow: 0 24px 64px rgba(44,44,44,0.1);
+    }
+
+    .hero-image img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 560px;
+    }
+
+    /* ── CONTENT ── */
+    .case-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem 8rem;
+    }
+
+    .case-section {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 4rem;
+      padding: 4rem 0;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .case-section:first-of-type { border-top: none; padding-top: 0; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      padding-top: 0.25rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .case-body p {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .case-body p strong { color: var(--charcoal); font-weight: 500; }
+    .case-body p:last-child { margin-bottom: 0; }
+
+    /* ── SCALE STAT CARDS ── */
+    .scale-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .scale-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .scale-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      color: var(--charcoal);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .scale-number em { font-style: italic; color: var(--teal-dark); }
+
+    .scale-desc {
+      font-size: 0.8rem;
+      color: var(--soft);
+      line-height: 1.5;
+    }
+
+    /* ── BEFORE / AFTER ── */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .ba-card {
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+    }
+
+    .ba-card.before { background: var(--cream-dark); }
+
+    .ba-card.after {
+      background: var(--teal-light);
+      border-color: rgba(75,191,184,0.3);
+    }
+
+    .ba-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .ba-card.after .ba-label { color: var(--teal-dark); }
+
+    .ba-item {
+      font-size: 0.875rem;
+      color: var(--mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(44,44,44,0.06);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ba-card.after .ba-item { color: var(--charcoal); }
+    .ba-item:last-child { border-bottom: none; }
+    .ba-item::before { content: '—'; color: var(--soft); flex-shrink: 0; }
+    .ba-card.after .ba-item::before { content: '✓'; color: var(--teal-dark); }
+
+    /* ── TECH BREAKDOWN ── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .tech-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+      padding: 1.25rem;
+    }
+
+    .tech-icon {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .tech-desc {
+      font-size: 0.78rem;
+      color: var(--mid);
+      line-height: 1.55;
+    }
+
+    /* ── PULLQUOTE ── */
+    .pullquote {
+      margin: 2rem 0;
+      padding: 1.75rem 2rem;
+      border-left: 3px solid var(--teal);
+      background: var(--white);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .pullquote p {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem !important;
+      font-style: italic;
+      color: var(--charcoal) !important;
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* ── IMAGE GRID ── */
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--cream-dark);
+    }
+
+    .image-grid .span-2 { grid-column: 1 / -1; }
+
+    .img-caption {
+      font-size: 0.75rem;
+      color: var(--soft);
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* ── OUTCOME CARD ── */
+    .outcome-card {
+      background: var(--charcoal);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .outcome-stat { text-align: center; }
+
+    .outcome-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .outcome-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      background: var(--white);
+      border-top: 1px solid var(--cream-dark);
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .next-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 1rem;
+    }
+
+    .next-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .next-sub {
+      font-size: 0.9rem;
+      color: var(--soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 0.875rem 2rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--cream-dark);
+      color: var(--mid);
+      padding: 0.875rem 2rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-ghost:hover { border-color: var(--charcoal); color: var(--charcoal); transform: translateY(-2px); }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      .case-hero { padding: 7rem 1.5rem 0; }
+      .case-content { padding: 0 1.5rem 6rem; }
+      .case-section { grid-template-columns: 1fr; gap: 1rem; }
+      .scale-cards { grid-template-columns: 1fr; }
+      .before-after, .tech-grid, .image-grid { grid-template-columns: 1fr; }
+      .outcome-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .next-project { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">Isa Montes Diaz</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="experiments.html">AI & Experiments</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Say hello</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <a href="index.html" class="back-link">Back to work</a>
+    <p class="case-eyebrow">Case Study · Red Hat</p>
+    <h1>One template. <em>300+</em> personalized executive experiences.</h1>
+    <p class="case-tagline">Red Hat needed personalized agendas for 150+ executives at their yearly Summit. We replaced a PDF process and 50 duplicate templates with one smart WordPress build that scales, updated instantly.</p>
+
+    <div class="meta-row">
+      <div class="meta-pill">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">Red Hat</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Scale</span>
+        <span class="meta-value">300+ microsites</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">My Role</span>
+        <span class="meta-value">Design & Implementation</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Tools</span>
+        <span class="meta-value">WordPress, Elementor, Illustrator</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Tech</span>
+        <span class="meta-value">Laravel, ACF, CPT UI</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="case-hero">
+    <div class="hero-image">
+      <!--
+        REPLACE with: assets/redhat-microsite.png
+        Use Image 1 from your uploads — the personalized executive microsite screenshot
+      -->
+      <img
+        src="assets/redhat-hero.jpg"
+        alt="Red Hat personalized executive microsite"
+      />
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="case-content">
+
+    <!-- THE PROBLEM -->
+    <div class="case-section fade-up">
+      <p class="section-label">The Problem</p>
+      <div class="case-body">
+        <h2>150+ executives. One PDF. Three years of duplicating templates.</h2>
+        <p>Every year, Red Hat's executive clients attending their Summit and Executive Exchange received personalized agendas and event information. The format: a <strong>PDF</strong>. The process: manually customized, hard to update, and impossible to scale.</p>
+        <p>When the team wanted to move to the web, for easy access, real-time changes, and a better executive experience, the existing approach was to <strong>duplicate a template 50 times</strong> and manually customize each one. We'd been doing it that way for three years.</p>
+        <p>The ask: can we automate it? Build something that serves 150+ unique executives without building 150+ unique sites?</p>
+
+        <div class="before-after">
+          <div class="ba-card before">
+            <p class="ba-label">Before</p>
+            <div class="ba-item">Static PDF per executive</div>
+            <div class="ba-item">50 duplicate WordPress templates</div>
+            <div class="ba-item">Manual updates for every change</div>
+            <div class="ba-item">Hard to scale beyond ~50 people</div>
+            <div class="ba-item">No real-time editing</div>
+          </div>
+          <div class="ba-card after">
+            <p class="ba-label">After</p>
+            <div class="ba-item">1 smart template for 150+ executives</div>
+            <div class="ba-item">Data pulled from Red Hat's Laravel system</div>
+            <div class="ba-item">Updates propagate instantly across all sites</div>
+            <div class="ba-item">Pre and post-event sites: 300+ total</div>
+            <div class="ba-item">Fully customized per executive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE SCALE ── -->
+    <div class="case-section fade-up">
+      <p class="section-label">The Scale</p>
+      <div class="case-body">
+        <h2>Triple the executives. A fraction of the work.</h2>
+        <p>The numbers tell the story. By building a data-driven template instead of duplicating pages, we were able to serve significantly more executives with significantly less manual effort.</p>
+
+        <div class="scale-cards">
+          <div class="scale-card">
+            <p class="scale-number"><em>1</em></p>
+            <p class="scale-desc">template that powers all executive experiences</p>
+          </div>
+          <div class="scale-card">
+            <p class="scale-number">300+</p>
+            <p class="scale-desc">total microsites (pre + post event, per executive)</p>
+          </div>
+          <div class="scale-card">
+            <p class="scale-number">3×</p>
+            <p class="scale-desc">more executives reached vs. the previous approach</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT I DID -->
+    <div class="case-section fade-up">
+      <p class="section-label">What I Did</p>
+      <div class="case-body">
+        <h2>Designer, builder, and first-time WordPress developer.</h2>
+        <p>I owned the design and the implementation end-to-end. That meant designing the microsite template, then actually building it, which pushed me into WordPress territory I hadn't been in before.</p>
+        <p>The technical approach used <strong>Loop Grids and Custom Post Types</strong> to pull executive-specific data from Red Hat's Laravel system directly into the template. One design. One codebase. Every executive gets their own personalized experience.</p>
+        <p>This was my first time working with WordPress as a true CMS with custom code, not just a page builder. Learning how data modeling works at that level changed how I think about design systems entirely.</p>
+
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-icon">🗃️</div>
+            <p class="tech-title">Custom Post Types (CPT UI)</p>
+            <p class="tech-desc">Built custom content types to house executive-specific data (agendas, hotel info, session details), all structured for the template to pull from.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🔁</div>
+            <p class="tech-title">Loop Grids + ACF</p>
+            <p class="tech-desc">Used Advanced Custom Fields and Loop Grids in Elementor to dynamically populate each microsite with the right content for each executive.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">⚙️</div>
+            <p class="tech-title">Laravel Data Integration</p>
+            <p class="tech-desc">Connected the template to Red Hat's existing Laravel system so executive data flows directly in, no manual copy-paste between systems.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">✏️</div>
+            <p class="tech-title">Template design</p>
+            <p class="tech-desc">Designed the microsite template in Elementor/WordPress, fully on-brand with Red Hat's visual system: clean, executive-appropriate, easy to update.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE WORK -->
+    <div class="case-section fade-up">
+      <p class="section-label">The Work</p>
+      <div class="case-body">
+        <h2>Personalized at scale, on brand.</h2>
+        <p>Each executive lands on a microsite that feels made just for them: their name, their agenda, their hotel, their sessions. The design is consistent and on-brand; the content is entirely their own.</p>
+
+        <div class="image-grid">
+          <!--
+            REPLACE:
+            assets/redhat-microsite.png    → Image 1 (executive personalized microsite)
+            assets/redhat-invitation.png   → Image 3 (the invitation hero screen)
+          -->
+          <img
+            class="span-2"
+            src="assets/redhat-microsite.jpg"
+            alt="Red Hat executive personalized microsite"
+          />
+          <div>
+            <img
+              src="assets/redhat-invitation.jpg"
+              alt="Executive Exchange invitation screen"
+            />
+            <p class="img-caption">Invitation screen, Executive Exchange</p>
+          </div>
+          <div>
+            <img
+              src="assets/redhat-map.jpg"
+              alt="Event map showing scale"
+            />
+            <p class="img-caption">Event map showing the scale of the experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="case-section fade-up">
+      <p class="section-label">The Outcome</p>
+      <div class="case-body">
+        <h2>A workflow we'd been doing for years, done twice as fast for triple the people.</h2>
+
+        <div class="pullquote">
+          <p>"A workflow we'd been doing for years for fewer people was done twice as fast for triple the executives, fully customized to every individual."</p>
+        </div>
+
+        <p>Beyond the scale, this project gave me a new mental model for design systems. When you build for data, not for pages, <strong>the template becomes the product</strong>, not the individual sites. That's a shift in thinking that now informs everything I build.</p>
+
+        <div class="outcome-card">
+          <div class="outcome-stat">
+            <p class="outcome-number">3×</p>
+            <p class="outcome-desc">more executives served vs. previous years</p>
+          </div>
+          <div class="outcome-stat">
+            <p class="outcome-number">2×</p>
+            <p class="outcome-desc">faster to produce than the old duplicate approach</p>
+          </div>
+          <div class="outcome-stat">
+            <p class="outcome-number">1st</p>
+            <p class="outcome-desc">time building WordPress with custom data modeling</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

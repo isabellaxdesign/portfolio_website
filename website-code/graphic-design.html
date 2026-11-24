@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphic Design: Isa Montes Diaz, Senior Designer & Strategist</title>
+  <meta name="description" content="Graphic design work by Isa Montes Diaz, covering financial services, brand identity, editorial, and print." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #4BBFB8; --teal-dark: #2A8C86; --teal-light: #D6F2F0;
+      --olive: #9A9A6A; --olive-light: #EEEEDD;
+      --cream: #F5F4EF; --cream-dark: #EAE9E2;
+      --charcoal: #2C2C2C; --mid: #5A5A5A; --soft: #9A9A9A; --white: #FFFFFF;
+      --radius: 12px; --radius-lg: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(245,244,239,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(75,191,184,0.15); }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 400; color: var(--mid); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal-dark); }
+    .nav-links a.active { color: var(--charcoal); font-weight: 500; }
+    .nav-cta { background: var(--teal) !important; color: var(--white) !important; padding: 0.5rem 1.25rem !important; border-radius: 100px !important; font-weight: 500 !important; }
+
+    .hero-bg { position: fixed; inset: 0; background: radial-gradient(ellipse 50% 40% at 90% 20%, rgba(75,191,184,0.1) 0%, transparent 70%), radial-gradient(ellipse 35% 35% at 5% 80%, rgba(154,154,106,0.08) 0%, transparent 60%); pointer-events: none; z-index: -1; }
+
+    .page-hero { padding: 10rem 4rem 4rem; max-width: 1100px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--soft); text-decoration: none; margin-bottom: 2.5rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--teal-dark); }
+    .back-link::before { content: '←'; }
+
+    .page-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+
+
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 4.5vw, 3.6rem); line-height: 1.1; letter-spacing: -0.03em; color: var(--charcoal); margin-bottom: 1.25rem; }
+    h1 em { font-style: italic; color: var(--teal-dark); }
+
+    .page-sub { font-size: 1.05rem; color: var(--mid); line-height: 1.75; max-width: 560px; font-weight: 300; margin-bottom: 2.5rem; }
+
+    .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .filter-btn { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; padding: 0.45rem 1rem; border-radius: 100px; border: 1px solid var(--cream-dark); background: var(--white); color: var(--mid); cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover { border-color: var(--teal); color: var(--teal-dark); }
+    .filter-btn.active { background: var(--charcoal); border-color: var(--charcoal); color: var(--white); }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 0 4rem 8rem; }
+
+    .gallery-grid { columns: 3; column-gap: 1.25rem; }
+    @media (max-width: 900px) { .gallery-grid { columns: 2; } }
+    @media (max-width: 540px) { .gallery-grid { columns: 1; } }
+
+    .gallery-item { break-inside: avoid; margin-bottom: 1.25rem; border-radius: var(--radius-lg); overflow: hidden; background: var(--white); border: 1px solid var(--cream-dark); cursor: pointer; transition: transform 0.25s, box-shadow 0.25s; position: relative; }
+    .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(44,44,44,0.12); }
+    .gallery-item:hover .item-overlay { opacity: 1; }
+    .gallery-item img { width: 100%; display: block; object-fit: cover; }
+
+    .item-overlay { position: absolute; inset: 0; background: rgba(44,44,44,0.82); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; opacity: 0; transition: opacity 0.25s; border-radius: var(--radius-lg); }
+    .item-category { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.3rem; }
+    .item-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--white); line-height: 1.25; margin-bottom: 0.4rem; }
+    .item-desc { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.5; font-weight: 300; }
+
+    .item-caption { padding: 0.875rem 1rem; display: none; }
+    .item-caption .item-category { color: var(--teal-dark); margin-bottom: 0.2rem; }
+    .item-caption .item-title { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--charcoal); }
+    @media (max-width: 700px) { .item-overlay { display: none; } .item-caption { display: block; } }
+
+    .lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(44,44,44,0.92); display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-inner { max-width: 900px; width: 100%; display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center; }
+    .lightbox-img { border-radius: var(--radius-lg); width: 100%; object-fit: contain; max-height: 75vh; box-shadow: 0 32px 80px rgba(0,0,0,0.4); }
+    .lightbox-info { color: var(--white); }
+    .lightbox-category { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
+    .lightbox-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+    .lightbox-client { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .lightbox-desc { font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.75; font-weight: 300; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.12); border: none; color: var(--white); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+    .gallery-item.hidden { display: none; }
+
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      .page-hero { padding: 8rem 1.5rem 3rem; }
+      main { padding: 0 1.5rem 6rem; }
+      .lightbox-inner { grid-template-columns: 1fr; }
+      .lightbox-img { max-height: 50vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-bg"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html">Isa Montes Diaz</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="graphic-design.html" class="active">Graphic Design</a></li>
+      <li><a href="experiments.html">AI & Experiments</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Say hello</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero fade-up">
+    <a href="index.html" class="back-link">Back to home</a>
+    <p class="page-eyebrow">Graphic Design</p>
+    <h1>Design that <em>lives</em> beyond the screen.</h1>
+    <p class="page-sub">Financial services, brand identity, editorial, print, and everything in between. This is where the craft shows up.</p>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="financial">Financial Services</button>
+      <button class="filter-btn" data-filter="identity">Identity</button>
+      <button class="filter-btn" data-filter="print">Print & Editorial</button>
+      <button class="filter-btn" data-filter="dataviz">Data Viz</button>
+      <button class="filter-btn" data-filter="typography">Typography</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="gallery-grid" id="gallery">
+
+      <!-- 1. BBH Steeplechase Invitation -->
+      <div class="gallery-item fade-up" data-category="financial"
+        data-title="Steeplechase Event Invitation"
+        data-client="Brown Brothers Harriman"
+        data-category-label="Financial Services · Print"
+        data-desc="A print event invitation for BBH's client reception at the Winterthur Point to Point Steeplechase, elegant, on-brand, and designed for a high-net-worth audience.">
+        <img src="assets/bbh-steeplechase.png" alt="BBH Steeplechase event invitation" />
+        <div class="item-overlay">
+          <p class="item-category">Financial Services · Print</p>
+          <p class="item-title">Steeplechase Invitation</p>
+          <p class="item-desc">Brown Brothers Harriman · Client event</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Financial Services</p>
+          <p class="item-title">Steeplechase Invitation: BBH</p>
+        </div>
+      </div>
+
+      <!-- 2. BBH Nashville Invitation -->
+      <div class="gallery-item fade-up" data-category="financial"
+        data-title="Nashville Music Event Invitation"
+        data-client="Brown Brothers Harriman"
+        data-category-label="Financial Services · Print"
+        data-desc="Event invitation for a BBH client evening featuring Grammy-nominated artist Dave Barnes. Rich editorial design within the BBH brand system.">
+        <img src="assets/bbh-nashville.png" alt="BBH Nashville music event invitation" />
+        <div class="item-overlay">
+          <p class="item-category">Financial Services · Print</p>
+          <p class="item-title">Nashville Event Invitation</p>
+          <p class="item-desc">Brown Brothers Harriman · Client event</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Financial Services</p>
+          <p class="item-title">Nashville Invitation: BBH</p>
+        </div>
+      </div>
+
+      <!-- 3. BBH Women to Watch -->
+      <div class="gallery-item fade-up" data-category="print"
+        data-title="19 Women to Watch in 2019"
+        data-client="Brown Brothers Harriman · Women & Wealth"
+        data-category-label="Editorial · Print"
+        data-desc="Magazine spread layout for BBH's Center for Women & Wealth publication, featuring profiles of women leaders. Clean editorial design with strong typographic hierarchy.">
+        <img src="assets/bbh-women-to-watch.png" alt="BBH 19 Women to Watch editorial spread" />
+        <div class="item-overlay">
+          <p class="item-category">Editorial · Print</p>
+          <p class="item-title">19 Women to Watch</p>
+          <p class="item-desc">BBH Women & Wealth · Magazine spread</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Editorial</p>
+          <p class="item-title">19 Women to Watch: BBH</p>
+        </div>
+      </div>
+
+      <!-- 4. BBH Young Professionals Network -->
+      <div class="gallery-item fade-up" data-category="financial"
+        data-title="Young Professionals Network Brochure"
+        data-client="Brown Brothers Harriman"
+        data-category-label="Financial Services · Print"
+        data-desc="Print brochure cover for BBH's Young Professionals Network affinity group. Bold geometric design executed within the BBH brand system.">
+        <img src="assets/bbh-ypn.png" alt="BBH Young Professionals Network brochure" />
+        <div class="item-overlay">
+          <p class="item-category">Financial Services · Print</p>
+          <p class="item-title">YPN Brochure</p>
+          <p class="item-desc">Brown Brothers Harriman · Print collateral</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Print</p>
+          <p class="item-title">YPN Brochure: BBH</p>
+        </div>
+      </div>
+
+      <!-- 5. Fidelity Infographic -->
+      <div class="gallery-item fade-up" data-category="dataviz"
+        data-title="Decade of Generational Wealth"
+        data-client="Fidelity Investments"
+        data-category-label="Data Visualization"
+        data-desc="A full infographic breaking down 8 strategic imperatives around generational wealth transfer, making dense financial data approachable, scannable, and visually compelling.">
+        <img src="assets/fidelity-infographic.png" alt="Fidelity Generational Wealth infographic" />
+        <div class="item-overlay">
+          <p class="item-category">Data Visualization</p>
+          <p class="item-title">Decade of Generational Wealth</p>
+          <p class="item-desc">Fidelity · 8-imperative infographic</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Data Viz</p>
+          <p class="item-title">Generational Wealth: Fidelity</p>
+        </div>
+      </div>
+
+      <!-- 6. Fidelity Curiosity Social -->
+      <div class="gallery-item fade-up" data-category="financial"
+        data-title="Curiosity Social Graphic"
+        data-client="Fidelity Center for Family Engagement"
+        data-category-label="Digital · Social Media"
+        data-desc="A branded social media graphic for Fidelity's Center for Family Engagement. Simple, bold, on-brand, designed to stop the scroll and communicate a single idea clearly.">
+        <img src="assets/fidelity-curiosity.png" alt="Fidelity Curiosity social graphic" />
+        <div class="item-overlay">
+          <p class="item-category">Digital · Social Media</p>
+          <p class="item-title">Curiosity Social Graphic</p>
+          <p class="item-desc">Fidelity · Social media asset</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Digital</p>
+          <p class="item-title">Curiosity Social: Fidelity</p>
+        </div>
+      </div>
+
+      <!-- 7. Fidelity Summit Deck -->
+      <div class="gallery-item fade-up" data-category="financial"
+        data-title="Stock Plan Summit '25"
+        data-client="Fidelity Investments"
+        data-category-label="Presentation Design"
+        data-desc="Title slide for Fidelity's Stock Plan Summit 2025 in Dana Point, CA. Clean brand execution using the Fidelity identity system, with strong composition, photo masking, and the brand's signature curve motif.">
+        <img src="assets/fidelity-summit.png" alt="Fidelity Stock Plan Summit 2025 title slide" />
+        <div class="item-overlay">
+          <p class="item-category">Presentation Design</p>
+          <p class="item-title">Stock Plan Summit '25</p>
+          <p class="item-desc">Fidelity · Event title slide</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Presentation</p>
+          <p class="item-title">Stock Plan Summit: Fidelity</p>
+        </div>
+      </div>
+
+      <!-- 8. GCSO Logo -->
+      <div class="gallery-item fade-up" data-category="identity"
+        data-title="GCSO Logo"
+        data-client="Red Hat"
+        data-category-label="Identity · Brand"
+        data-desc="A bold, minimal logomark for Red Hat's Global Commercial Sales Organization. Swiss design influence: four letters, maximum impact.">
+        <img src="assets/gcso-logo.png" alt="GCSO Logo for Red Hat" />
+        <div class="item-overlay">
+          <p class="item-category">Identity · Brand</p>
+          <p class="item-title">GCSO Logo</p>
+          <p class="item-desc">Red Hat · Logomark</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Identity</p>
+          <p class="item-title">GCSO Logo: Red Hat</p>
+        </div>
+      </div>
+
+      <!-- 9. Fidelity Article Layout -->
+      <div class="gallery-item fade-up" data-category="print"
+        data-title="Later-in-Life Conversations"
+        data-client="Fidelity · Center for Family Engagement"
+        data-category-label="Editorial · Print Layout"
+        data-desc="Article layout and design for Fidelity's Center for Family Engagement publication, with clean typographic hierarchy, pull quotes, and branded editorial design for a financial services audience.">
+        <img src="assets/fidelity-article.png" alt="Fidelity Center for Family Engagement article layout" />
+        <div class="item-overlay">
+          <p class="item-category">Editorial · Print Layout</p>
+          <p class="item-title">Later-in-Life Conversations</p>
+          <p class="item-desc">Fidelity · Editorial layout</p>
+        </div>
+        <div class="item-caption">
+          <p class="item-category">Editorial</p>
+          <p class="item-title">Article Layout: Fidelity</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <div class="lightbox-inner">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <div class="lightbox-info">
+        <p class="lightbox-category" id="lightboxCategory"></p>
+        <h2 class="lightbox-title" id="lightboxTitle"></h2>
+        <p class="lightbox-client" id="lightboxClient"></p>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.gallery-item');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxClient = document.getElementById('lightboxClient');
+    const lightboxCategory = document.getElementById('lightboxCategory');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxTitle.textContent = item.dataset.title;
+        lightboxClient.textContent = item.dataset.client;
+        lightboxCategory.textContent = item.dataset.categoryLabel;
+        lightboxDesc.textContent = item.dataset.desc;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>

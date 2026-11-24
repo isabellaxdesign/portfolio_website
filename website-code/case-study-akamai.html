@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akamai Foundation Website · Isa Montes Diaz, Senior Designer &amp; Strategist</title>
+  <meta name="description" content="Designing and building an evergreen marketing site for Akamai's Foundation, from scratch, on-brand, and built to last." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #4BBFB8; --teal-dark: #2A8C86; --teal-light: #D6F2F0;
+      --olive: #9A9A6A; --olive-light: #EEEEDD;
+      --cream: #F5F4EF; --cream-dark: #EAE9E2;
+      --charcoal: #2C2C2C; --mid: #5A5A5A; --soft: #9A9A9A; --white: #FFFFFF;
+      --radius: 12px; --radius-lg: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(245,244,239,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(75,191,184,0.15); }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal-dark); }
+    .nav-cta { background: var(--teal) !important; color: var(--white) !important; padding: 0.5rem 1.25rem !important; border-radius: 100px !important; font-weight: 500 !important; }
+
+    .case-hero { padding: 8rem 4rem 0; max-width: 1100px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--soft); text-decoration: none; margin-bottom: 2.5rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--teal-dark); }
+    .back-link::before { content: '←'; }
+
+    .case-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+
+
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -0.03em; color: var(--charcoal); margin-bottom: 1.25rem; max-width: 800px; }
+    h1 em { font-style: italic; color: var(--teal-dark); }
+
+    .case-tagline { font-size: 1.1rem; color: var(--mid); max-width: 600px; line-height: 1.75; font-weight: 300; margin-bottom: 3rem; }
+
+    .meta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+    .meta-pill { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.75rem 1.25rem; background: var(--white); border-radius: var(--radius); border: 1px solid var(--cream-dark); min-width: 120px; }
+    .meta-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); }
+    .meta-value { font-size: 0.875rem; font-weight: 500; color: var(--charcoal); }
+
+    .hero-image { width: 100%; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 6rem; box-shadow: 0 24px 64px rgba(44,44,44,0.1); }
+    .hero-image img { width: 100%; display: block; object-fit: cover; max-height: 560px; }
+
+    .case-content { max-width: 1100px; margin: 0 auto; padding: 0 4rem 8rem; }
+
+    .case-section { display: grid; grid-template-columns: 220px 1fr; gap: 4rem; padding: 4rem 0; border-top: 1px solid var(--cream-dark); }
+    .case-section:first-of-type { border-top: none; padding-top: 0; }
+
+    .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); padding-top: 0.25rem; }
+
+    h2 { font-family: 'DM Serif Display', serif; font-size: 1.75rem; letter-spacing: -0.025em; line-height: 1.2; color: var(--charcoal); margin-bottom: 1rem; }
+
+    .case-body p { font-size: 1rem; color: var(--mid); line-height: 1.85; margin-bottom: 1.25rem; font-weight: 300; }
+    .case-body p strong { color: var(--charcoal); font-weight: 500; }
+    .case-body p:last-child { margin-bottom: 0; }
+
+    .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .ba-card { padding: 1.25rem; border-radius: var(--radius); border: 1px solid var(--cream-dark); }
+    .ba-card.before { background: var(--cream-dark); }
+    .ba-card.after { background: var(--teal-light); border-color: rgba(75,191,184,0.3); }
+    .ba-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); margin-bottom: 0.75rem; }
+    .ba-card.after .ba-label { color: var(--teal-dark); }
+    .ba-item { font-size: 0.875rem; color: var(--mid); padding: 0.4rem 0; border-bottom: 1px solid rgba(44,44,44,0.06); display: flex; align-items: center; gap: 0.5rem; }
+    .ba-card.after .ba-item { color: var(--charcoal); }
+    .ba-item:last-child { border-bottom: none; }
+    .ba-item::before { content: '—'; color: var(--soft); flex-shrink: 0; }
+    .ba-card.after .ba-item::before { content: '✓'; color: var(--teal-dark); }
+
+    .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .tech-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--cream-dark); padding: 1.25rem; }
+    .tech-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .tech-title { font-size: 0.875rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.4rem; }
+    .tech-desc { font-size: 0.78rem; color: var(--mid); line-height: 1.55; }
+
+    .image-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .image-grid img { width: 100%; border-radius: var(--radius); object-fit: cover; display: block; border: 1px solid var(--cream-dark); }
+    .image-grid .span-2 { grid-column: 1 / -1; }
+    .img-caption { font-size: 0.75rem; color: var(--soft); margin-top: 0.5rem; text-align: center; }
+
+    .pullquote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--teal); background: var(--white); border-radius: 0 var(--radius) var(--radius) 0; }
+    .pullquote p { font-family: 'DM Serif Display', serif; font-size: 1.2rem !important; font-style: italic; color: var(--charcoal) !important; line-height: 1.6 !important; font-weight: 400 !important; margin-bottom: 0 !important; }
+
+    .outcome-card { background: var(--charcoal); border-radius: var(--radius-lg); padding: 2.5rem; margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+    .outcome-stat { text-align: center; }
+    .outcome-number { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--teal); line-height: 1; margin-bottom: 0.5rem; }
+    .outcome-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    .live-link { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--teal-light); color: var(--teal-dark); font-size: 0.875rem; font-weight: 500; padding: 0.6rem 1rem; border-radius: 100px; text-decoration: none; margin-top: 1rem; transition: background 0.2s; }
+    .live-link:hover { background: var(--teal); color: var(--white); }
+
+    .next-project { background: var(--white); border-top: 1px solid var(--cream-dark); padding: 4rem; text-align: center; }
+    .next-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); margin-bottom: 1rem; }
+    .next-title { font-family: 'DM Serif Display', serif; font-size: 2rem; letter-spacing: -0.02em; color: var(--charcoal); margin-bottom: 1.5rem; }
+
+    .btn-primary { display: inline-block; background: var(--charcoal); color: var(--white); padding: 0.875rem 2rem; border-radius: 100px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      .case-hero { padding: 7rem 1.5rem 0; }
+      .case-content { padding: 0 1.5rem 6rem; }
+      .case-section { grid-template-columns: 1fr; gap: 1rem; }
+      .before-after, .tech-grid, .image-grid { grid-template-columns: 1fr; }
+      .outcome-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .next-project { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">Isa Montes Diaz</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="experiments.html">AI & Experiments</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Say hello</a></li>
+    </ul>
+  </nav>
+
+  <div class="case-hero">
+    <a href="index.html" class="back-link">Back to work</a>
+    <p class="case-eyebrow">Case Study · Akamai Technologies</p>
+    <h1>They built a new site every year. We built one that <em>lasts.</em></h1>
+    <p class="case-tagline">The Akamai Foundation needed a real marketing presence, not another throwaway annual site. I designed and built an evergreen website from scratch, launched March 2026, that grows with the organization.</p>
+
+    <div class="meta-row">
+      <div class="meta-pill">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">Akamai Technologies</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Launched</span>
+        <span class="meta-value">March 2026</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">My Role</span>
+        <span class="meta-value">Design & Build</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Tools</span>
+        <span class="meta-value">Illustrator, WordPress, Elementor</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Live Site</span>
+        <span class="meta-value">akamaifoundation.com</span>
+      </div>
+    </div>
+
+    <a href="https://akamaifoundation.com" target="_blank" rel="noopener" class="live-link">View live site ↗</a>
+  </div>
+
+  <div class="case-hero">
+    <div class="hero-image">
+      <!--
+        REPLACE with: assets/akamai-foundation-hero.jpg
+        Screenshot of the akamaifoundation.com homepage
+      -->
+      <img
+        src="assets/akamai-foundation-hero.jpg"
+        alt="Akamai Foundation website homepage"
+      />
+    </div>
+  </div>
+
+  <div class="case-content">
+
+    <div class="case-section fade-up">
+      <p class="section-label">The Problem</p>
+      <div class="case-body">
+        <h2>A new website every year is not a marketing strategy.</h2>
+        <p>The Akamai Foundation had been building a new website every single year, a time-consuming, expensive cycle that left them with no consistent web presence and no way to build on previous work.</p>
+        <p>The ask was to finally break that cycle: build a <strong>real, evergreen marketing site</strong> that could tell the Foundation's story, showcase their global partners, highlight community impact, and grow over time without starting from scratch.</p>
+
+        <div class="before-after">
+          <div class="ba-card before">
+            <p class="ba-label">Before</p>
+            <div class="ba-item">New site built from scratch every year</div>
+            <div class="ba-item">No consistent brand presence</div>
+            <div class="ba-item">No templated partner pages</div>
+            <div class="ba-item">Content didn't carry forward</div>
+          </div>
+          <div class="ba-card after">
+            <p class="ba-label">After</p>
+            <div class="ba-item">One evergreen site built to last</div>
+            <div class="ba-item">Consistent, on-brand Akamai presence</div>
+            <div class="ba-item">Templated posts for all partner orgs</div>
+            <div class="ba-item">Content grows with the organization</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section fade-up">
+      <p class="section-label">What I Did</p>
+      <div class="case-body">
+        <h2>Designed in Illustrator. Built in WordPress. End to end.</h2>
+        <p>I owned this project completely, from the initial design in Illustrator through to the build in WordPress and Elementor. That meant working closely within <strong>Akamai's brand system</strong> while creating a visual language specific to the Foundation's mission around STEM education and global impact.</p>
+        <p>The site includes multiple page types: homepage, about, partners, community impact, and a <strong>templated post system</strong> for partner organizations around the world. Each partner gets their own page, built from one reusable template.</p>
+
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-icon">🎨</div>
+            <p class="tech-title">Design in Illustrator</p>
+            <p class="tech-desc">Full site design covering layouts, graphics, and visual assets, all created in Illustrator within Akamai's brand guidelines.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🏗️</div>
+            <p class="tech-title">Built in WordPress + Elementor</p>
+            <p class="tech-desc">Implemented the design end-to-end in WordPress using Elementor, with no hand-off and no translation loss between design and build.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🔁</div>
+            <p class="tech-title">Templated partner posts</p>
+            <p class="tech-desc">Built a reusable post template for partner organizations, making it easy to add new partners without redesigning each time.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">♾️</div>
+            <p class="tech-title">Evergreen architecture</p>
+            <p class="tech-desc">Structured the site so content, stats, and partner stories can be updated year over year without a rebuild.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section fade-up">
+      <p class="section-label">The Work</p>
+      <div class="case-body">
+        <h2>A marketing site with real impact numbers.</h2>
+        <p>The site tells the Foundation's story across multiple pages: mission, global partners (187 organizations across 12 countries), community impact, and volunteer stories. Every section is designed to be updated and expanded over time.</p>
+
+        <div class="image-grid">
+          <!--
+            REPLACE these with screenshots from akamaifoundation.com:
+            assets/akamai-homepage.jpg   → homepage hero
+            assets/akamai-partners.jpg   → partners section
+            assets/akamai-impact.jpg     → impact/stats section
+            assets/akamai-partner-page.jpg → individual partner page
+          -->
+          <img class="span-2"
+            src="assets/akamai-foundation-hero.jpg"
+            alt="Akamai Foundation homepage"
+          />
+          <div>
+            <img src="assets/akamai-partners.png" alt="Partners section" />
+            <p class="img-caption">Global partners section, 187 orgs across 12 countries</p>
+          </div>
+          <div>
+            <img src="assets/akamai-partner-page.png" alt="Partner page template" />
+            <p class="img-caption">Templated partner page, reusable across all orgs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section fade-up">
+      <p class="section-label">The Outcome</p>
+      <div class="case-body">
+        <h2>A foundation site that finally reflects the foundation's scale.</h2>
+
+        <div class="pullquote">
+          <p>"They used to build a new site every year. Now they have one that grows with them, and it launched on time in March 2026."</p>
+        </div>
+
+        <p>The site launched in March 2026 and is live at <a href="https://akamaifoundation.com" target="_blank" rel="noopener" style="color: var(--teal-dark);">akamaifoundation.com</a>. It surfaces the Foundation's global reach: <strong>$12.5M in grant funding, 187 partner organizations, 12 countries</strong>, in a way that's clear, on-brand, and built to last.</p>
+
+        <div class="outcome-card">
+          <div class="outcome-stat">
+            <p class="outcome-number">187</p>
+            <p class="outcome-desc">partner organizations featured across the site</p>
+          </div>
+          <div class="outcome-stat">
+            <p class="outcome-number">12</p>
+            <p class="outcome-desc">countries represented, built to scale globally</p>
+          </div>
+          <div class="outcome-stat">
+            <p class="outcome-number">1</p>
+            <p class="outcome-desc">evergreen site replacing an annual rebuild cycle</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

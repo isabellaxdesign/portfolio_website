@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About: Isa Montes Diaz, Senior Designer & Strategist</title>
+  <meta name="description" content="About Isa Montes Diaz, Senior Designer & Strategist based in Somerville, MA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #4BBFB8; --teal-dark: #2A8C86; --teal-light: #D6F2F0;
+      --olive: #9A9A6A; --olive-light: #EEEEDD;
+      --cream: #F5F4EF; --cream-dark: #EAE9E2;
+      --charcoal: #2C2C2C; --mid: #5A5A5A; --soft: #9A9A9A; --white: #FFFFFF;
+      --radius: 12px; --radius-lg: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(245,244,239,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(75,191,184,0.15); }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 400; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal-dark); }
+    .nav-links a.active { color: var(--charcoal); font-weight: 500; }
+    .nav-cta { background: var(--teal) !important; color: var(--white) !important; padding: 0.5rem 1.25rem !important; border-radius: 100px !important; font-weight: 500 !important; }
+
+    /* ── BG ── */
+    .hero-bg { position: fixed; inset: 0; background: radial-gradient(ellipse 50% 40% at 90% 20%, rgba(75,191,184,0.1) 0%, transparent 70%), radial-gradient(ellipse 35% 35% at 5% 80%, rgba(154,154,106,0.08) 0%, transparent 60%); pointer-events: none; z-index: -1; }
+
+    /* ── ABOUT HERO ── */
+    .about-hero {
+      padding: 10rem 4rem 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .about-photo-wrap { position: relative; }
+
+    .about-photo {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      aspect-ratio: 3/4;
+      box-shadow: 0 16px 40px rgba(44,44,44,0.1);
+      display: block;
+    }
+
+    .about-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--teal-light);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal-dark);
+      font-size: 0.875rem;
+    }
+
+    .about-text { padding-top: 0.5rem; }
+
+    .page-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+
+
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.1; letter-spacing: -0.03em; color: var(--charcoal); margin-bottom: 1.5rem; }
+    h1 em { font-style: italic; color: var(--teal-dark); }
+
+    .about-text p { font-size: 1rem; color: var(--mid); line-height: 1.85; margin-bottom: 1.25rem; font-weight: 300; }
+    .about-text p strong { color: var(--charcoal); font-weight: 500; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* ── SKILLS GRID ── */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .skill-item { padding: 1rem 1.25rem; background: var(--white); border-radius: var(--radius); border: 1px solid var(--cream-dark); }
+    .skill-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); margin-bottom: 0.3rem; }
+    .skill-value { font-size: 0.875rem; color: var(--charcoal); font-weight: 400; }
+
+    /* ── SECTION DIVIDER ── */
+    .section-divider { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+    .divider-line { border: none; border-top: 1px solid var(--cream-dark); margin-bottom: 5rem; }
+
+    /* ── MUSIC SECTION ── */
+    .music-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .section-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+
+
+    h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -0.025em; line-height: 1.2; color: var(--charcoal); margin-bottom: 1rem; }
+    h2 em { font-style: italic; color: var(--teal-dark); }
+
+    .music-text p { font-size: 1rem; color: var(--mid); line-height: 1.85; font-weight: 300; }
+
+    .music-photo-wrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 56px rgba(44,44,44,0.15); }
+    .music-photo { width: 100%; display: block; object-fit: cover; aspect-ratio: 2/3; }
+
+    /* ── ART SECTION ── */
+    .art-section { max-width: 1100px; margin: 0 auto; padding: 0 4rem 8rem; }
+
+    .art-header { margin-bottom: 3rem; }
+
+    .art-grid { columns: 3; column-gap: 1.25rem; }
+    @media (max-width: 900px) { .art-grid { columns: 2; } }
+    @media (max-width: 540px) { .art-grid { columns: 1; } }
+
+    .art-item { break-inside: avoid; margin-bottom: 1.25rem; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 16px rgba(44,44,44,0.08); transition: transform 0.25s, box-shadow 0.25s; }
+    .art-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(44,44,44,0.14); }
+    .art-item img { width: 100%; display: block; object-fit: cover; }
+
+    /* ── CONTACT CTA ── */
+    .contact-cta { background: var(--charcoal); padding: 5rem 4rem; text-align: center; }
+    .contact-cta h2 { color: var(--white); margin-bottom: 1rem; }
+    .contact-cta p { color: rgba(255,255,255,0.55); font-size: 1rem; margin-bottom: 2.5rem; font-weight: 300; }
+    .cta-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .cta-link { padding: 0.875rem 2rem; border-radius: 100px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: transform 0.15s, background 0.2s; }
+    .cta-link:hover { transform: translateY(-2px); }
+    .cta-primary { background: var(--teal); color: var(--white); }
+    .cta-primary:hover { background: var(--teal-dark); }
+    .cta-ghost { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.8); }
+    .cta-ghost:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+
+    /* ── FADE UP ── */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      .about-hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 8rem 1.5rem 4rem; }
+      .about-photo { aspect-ratio: 1/1; }
+      .section-divider, .music-section, .art-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .music-section { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-cta { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-bg"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Isa Montes Diaz</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="experiments.html">AI & Experiments</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Say hello</a></li>
+    </ul>
+  </nav>
+
+  <!-- ABOUT HERO -->
+  <div class="about-hero fade-up">
+    <div class="about-photo-wrap">
+      <!--
+        REPLACE with: assets/isa-headshot.jpg
+      -->
+      <img
+        src="assets/isa-headshot.jpg"
+        alt="Isa Montes Diaz"
+        class="about-photo"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="about-photo-placeholder" style="display:none;">Your photo here</div>
+    </div>
+
+    <div class="about-text">
+      <p class="page-eyebrow">About Me</p>
+      <h1>Strategic by nature.<br><em>Visual</em> by instinct.</h1>
+
+      <p>I'm a <strong>Senior Designer & Strategist based in Somerville, MA</strong> with a background in visual design, UX, and brand execution across digital, print, and experience design. I've worked with Fortune 500 clients and global brands, producing work that's on-brand, accessible, and built to scale.</p>
+
+      <p>I've worked inside the brand systems of <strong>Fidelity, Red Hat, Akamai, Brown Brothers Harriman, and J&J</strong>, designing everything from full marketing sites and infographics to illustrated systems and campaign assets. At BBH, I designed cross-platform assets for 20+ global marketing campaigns and led WCAG-compliant accessibility implementation for international financial products.</p>
+
+      <p>My approach is rooted in <strong>human behavior and psychology</strong>. I don't just make things look good, I think hard about why people do what they do and design around that. That lens has driven outcomes like a <strong>47% increase in learner engagement</strong> on a redesigned e-learning experience.</p>
+
+      <p>I thrive in rooms, in-person, collaborative, with a team that's actually trying to solve something hard together. I'm currently building toward more <strong>design leadership opportunities</strong>.</p>
+
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-label">Adobe Suite</div>
+          <div class="skill-value">Illustrator, InDesign, Photoshop, After Effects</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label">Digital & Web</div>
+          <div class="skill-value">WordPress, Elementor, Figma, HTML/CSS</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label">Specialties</div>
+          <div class="skill-value">Visual Design, UX, Brand Systems, WCAG</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label">Education</div>
+          <div class="skill-value">Northeastern University, Business & Design</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="section-divider">
+    <hr class="divider-line" />
+  </div>
+
+  <!-- MUSIC SECTION -->
+  <div class="music-section fade-up">
+    <div class="music-text">
+      <p class="section-eyebrow">Beyond the work</p>
+      <h2>I make music.<br><em>Loudly.</em></h2>
+      <p>Outside of design, I'm a performer and musician. Music has always been the other place where I think about rhythm, tension, and release. All the same things that make good design work. It keeps me honest about what it means to really connect with an audience.</p>
+    </div>
+    <div class="music-photo-wrap">
+      <!--
+        REPLACE with: assets/isa-performing.jpg
+      -->
+      <img
+        src="assets/isa-performing.jpg"
+        alt="Isa performing live"
+        class="music-photo"
+        onerror="this.style.background='var(--teal-light)'; this.style.minHeight='400px';"
+      />
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="section-divider">
+    <hr class="divider-line" />
+  </div>
+
+  <!-- ART SECTION -->
+  <div class="art-section fade-up">
+    <div class="art-header">
+      <p class="section-eyebrow">Fine Art</p>
+      <h2>I've been drawing people<br>my whole life.</h2>
+    </div>
+
+    <div class="art-grid">
+      <!--
+        REPLACE each src with your actual art files.
+        Suggested filenames:
+        assets/art-pastel-portrait.jpg   → oil pastel, green background
+        assets/art-split-face.jpg        → acrylic split face painting
+        assets/art-carnations.jpg        → carnation still life
+        assets/art-crimson.jpg           → bold expressive face
+        assets/art-charcoal-portrait.jpg → charcoal portrait, teal bg
+        assets/art-two-figures.jpg       → colored pencil two figures
+      -->
+      <div class="art-item">
+        <img src="assets/art-pastel-portrait.jpg" alt="Oil pastel portrait" />
+      </div>
+      <div class="art-item">
+        <img src="assets/art-split-face.jpg" alt="Acrylic split face painting" />
+      </div>
+      <div class="art-item">
+        <img src="assets/art-carnations.jpg" alt="Carnation still life" />
+      </div>
+      <div class="art-item">
+        <img src="assets/art-crimson.jpg" alt="Expressive face painting" />
+      </div>
+      <div class="art-item">
+        <img src="assets/art-charcoal-portrait.jpg" alt="Charcoal portrait" />
+      </div>
+      <div class="art-item">
+        <img src="assets/art-two-figures.jpg" alt="Two figures drawing" />
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT CTA -->
+  <div class="contact-cta fade-up">
+    <h2>Want to work together?</h2>
+    <p>I'm open to new Senior Designer opportunities: full-time, contract, and everything in between.</p>
+    <div class="cta-links">
+      <a href="mailto:isabellabfdiaz@gmail.com" class="cta-link cta-primary">Send me an email</a>
+      <a href="https://linkedin.com/in/isamontesdiaz" target="_blank" rel="noopener" class="cta-link cta-ghost">LinkedIn</a>
+      <a href="index.html#work" class="cta-link cta-ghost">See my work</a>
+    </div>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

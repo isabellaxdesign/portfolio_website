@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI &amp; Experiments: Isa Montes Diaz, Senior Designer &amp; Strategist</title>
+  <meta name="description" content="How Isa Montes Diaz uses AI as a thinking partner, build tool, and design accelerator." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #4BBFB8;
+      --teal-dark:  #2A8C86;
+      --teal-light: #D6F2F0;
+      --olive:      #9A9A6A;
+      --olive-light:#EEEEDD;
+      --cream:      #F5F4EF;
+      --cream-dark: #EAE9E2;
+      --charcoal:   #2C2C2C;
+      --mid:        #5A5A5A;
+      --soft:       #9A9A9A;
+      --white:      #FFFFFF;
+      --radius:     12px;
+      --radius-lg:  20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(245, 244, 239, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(75,191,184,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal-dark); }
+    .nav-links a.active { color: var(--charcoal); font-weight: 500; }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 100px !important;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--teal-dark) !important; }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 10rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 40% at 90% 20%, rgba(75,191,184,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 35% at 5% 80%, rgba(154,154,106,0.1) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--soft);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--teal-dark); }
+    .back-link::before { content: '←'; }
+
+    .page-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--teal-dark);
+    }
+
+    .page-sub {
+      font-size: 1.05rem;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 580px;
+      font-weight: 300;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem 8rem;
+    }
+
+    /* ── EXPERIMENT CARD ── */
+    .experiment {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      padding: 4rem 0;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .experiment:first-of-type { border-top: none; }
+
+    .experiment.reverse { direction: rtl; }
+    .experiment.reverse > * { direction: ltr; }
+
+    .exp-screenshots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .exp-screenshots.single {
+      grid-template-columns: 1fr;
+    }
+
+    .exp-screenshot {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--cream-dark);
+      box-shadow: 0 8px 24px rgba(44,44,44,0.08);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .exp-screenshot:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(44,44,44,0.12);
+    }
+
+    .exp-screenshot.featured {
+      grid-column: 1 / -1;
+    }
+
+    .exp-screenshot img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .exp-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.875rem;
+      color: var(--soft);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-client {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .exp-desc {
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    /* ── NOTES / STICKY ── */
+    .exp-notes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .note {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--cream-dark);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      position: relative;
+      padding-left: 1.25rem;
+    }
+
+    .note::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .note-problem::before { background: var(--olive); }
+    .note-learn::before { background: var(--teal); }
+
+    .note-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 0.3rem;
+    }
+
+    .note-text {
+      color: var(--charcoal);
+      font-weight: 400;
+    }
+
+    /* ── TOOL CHIPS ── */
+    .exp-tools {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tool-chip {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      background: var(--cream-dark);
+      color: var(--mid);
+      border: 1px solid rgba(44,44,44,0.08);
+    }
+
+    .tool-chip-teal {
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+
+    /* ── COMING SOON ── */
+    .coming-soon {
+      margin-top: 4rem;
+      padding: 3rem;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--cream-dark);
+      text-align: center;
+    }
+
+    .coming-soon-emoji {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .coming-soon h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .coming-soon p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      max-width: 400px;
+      margin: 0 auto 1.5rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--charcoal);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-outline:hover {
+      background: var(--charcoal);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ── FADE IN ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      .page-hero { padding: 8rem 1.5rem 3rem; }
+      main { padding: 0 1.5rem 6rem; }
+      .experiment { grid-template-columns: 1fr; gap: 2rem; }
+      .experiment.reverse { direction: ltr; }
+      .exp-screenshots { grid-template-columns: 1fr; }
+      .exp-screenshot.featured { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-bg"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Isa Montes Diaz</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="experiments.html" class="active">AI & Experiments</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Say hello</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <a href="index.html" class="back-link">Back to home</a>
+    <p class="page-eyebrow">AI & Experiments</p>
+    <h1>I use AI as a thinking partner, a build tool, and a <em>design accelerator.</em></h1>
+    <p class="page-sub">Here's what that looks like in practice: messy, iterative, and genuinely useful. These aren't polished case studies. They're experiments that taught me something.</p>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- EXPERIMENT 1: Individual Perspectives Tool -->
+    <div class="experiment fade-up">
+      <div class="exp-screenshots">
+        <!--
+          REPLACE these placeholders with your actual screenshots.
+          Upload to Replit as:
+            assets/perspectives-landing.png  (the red branded landing screen)
+            assets/perspectives-admin.png    (the admin dashboard)
+            assets/perspectives-submit.png   (the group submission screen)
+          Then update the src attributes below.
+        -->
+        <div class="exp-screenshot featured">
+          <img
+            src="https://placehold.co/700x420/E8F4F3/2A8C86?text=Participant+landing+screen"
+            alt="Individual Perspectives Tool landing screen"
+          />
+        </div>
+        <div class="exp-screenshot">
+          <img
+            src="https://placehold.co/340x260/EEEEDD/6B6B40?text=Group+submission+view"
+            alt="Group submission screen"
+          />
+        </div>
+        <div class="exp-screenshot">
+          <img
+            src="https://placehold.co/340x260/F5F4EF/5A5A5A?text=Admin+dashboard"
+            alt="Admin dashboard"
+          />
+        </div>
+      </div>
+
+      <div>
+        <p class="exp-number">Experiment 01</p>
+        <p class="exp-client">Collective Next · Built with Replit AI</p>
+        <h2>Individual Perspectives Tool</h2>
+        <p class="exp-desc">In-person facilitation workshops always had the same problem: collecting group inputs, synthesizing them, and aligning thinking meant jumping between a dozen different tools and sites. I built one environment to do all of it.</p>
+
+        <div class="exp-notes">
+          <div class="note note-problem">
+            <div class="note-label">The problem</div>
+            <div class="note-text">How do we turn a repeatable in-person event module into a digital tool that can be reused and reskinned across different clients and events, without rebuilding from scratch every time?</div>
+          </div>
+          <div class="note note-learn">
+            <div class="note-label">What I learned</div>
+            <div class="note-text">Baking admin features directly into the AI build means we don't have to keep spinning up new sites. One smart template, infinitely reskinnable. That's the real unlock.</div>
+          </div>
+        </div>
+
+        <div class="exp-tools">
+          <span class="tool-chip tool-chip-teal">Replit AI</span>
+          <span class="tool-chip">Figma</span>
+          <span class="tool-chip">Admin Portal</span>
+          <span class="tool-chip">Front-end Dev</span>
+          <span class="tool-chip">Facilitation Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="coming-soon fade-up">
+      <span class="coming-soon-emoji">🧪</span>
+      <h3>More experiments in progress</h3>
+      <p>This page is a living document. I'm always building something new. Check back soon, or reach out if you want to see what's cooking.</p>
+      <a href="index.html#contact" class="btn-outline">Get in touch</a>
+    </div>
+
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

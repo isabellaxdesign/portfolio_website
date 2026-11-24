@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hop-Portunity: Fidelity · Isa Montes Diaz, Senior Designer &amp; Strategist</title>
+  <meta name="description" content="How a PowerPoint and a worksheet became a fully illustrated board game for 180 people that actually changed behavior." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #4BBFB8;
+      --teal-dark:  #2A8C86;
+      --teal-light: #D6F2F0;
+      --olive:      #9A9A6A;
+      --olive-light:#EEEEDD;
+      --cream:      #F5F4EF;
+      --cream-dark: #EAE9E2;
+      --charcoal:   #2C2C2C;
+      --mid:        #5A5A5A;
+      --soft:       #9A9A9A;
+      --white:      #FFFFFF;
+      --radius:     12px;
+      --radius-lg:  20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(245, 244, 239, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(75,191,184,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal-dark); }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 100px !important;
+      font-weight: 500 !important;
+    }
+
+    /* ── HERO ── */
+    .case-hero {
+      padding: 8rem 4rem 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--soft);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--teal-dark); }
+    .back-link::before { content: '←'; }
+
+    .case-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      max-width: 800px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--teal-dark);
+    }
+
+    .case-tagline {
+      font-size: 1.1rem;
+      color: var(--mid);
+      max-width: 600px;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+
+    /* ── META PILLS ── */
+    .meta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .meta-pill {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.75rem 1.25rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+      min-width: 120px;
+    }
+
+    .meta-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .meta-value {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    /* ── HERO IMAGE ── */
+    .hero-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 6rem;
+      box-shadow: 0 24px 64px rgba(44,44,44,0.1);
+    }
+
+    .hero-image img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 560px;
+    }
+
+    /* ── CONTENT ── */
+    .case-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem 8rem;
+    }
+
+    .case-section {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 4rem;
+      padding: 4rem 0;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .case-section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      padding-top: 0.25rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .case-body p {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .case-body p strong {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .case-body p:last-child { margin-bottom: 0; }
+
+    /* ── BEFORE / AFTER ── */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .ba-card {
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+    }
+
+    .ba-card.before {
+      background: var(--cream-dark);
+    }
+
+    .ba-card.after {
+      background: var(--teal-light);
+      border-color: rgba(75,191,184,0.3);
+    }
+
+    .ba-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .ba-card.after .ba-label { color: var(--teal-dark); }
+
+    .ba-item {
+      font-size: 0.875rem;
+      color: var(--mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(44,44,44,0.06);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ba-card.after .ba-item { color: var(--charcoal); }
+    .ba-item:last-child { border-bottom: none; }
+
+    .ba-item::before {
+      content: '—';
+      color: var(--soft);
+      flex-shrink: 0;
+    }
+
+    .ba-card.after .ba-item::before {
+      content: '✓';
+      color: var(--teal-dark);
+    }
+
+    /* ── PROCESS STEPS ── */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content p {
+      font-size: 0.82rem !important;
+      color: var(--soft) !important;
+      margin-bottom: 0 !important;
+      line-height: 1.5 !important;
+    }
+
+    /* ── IMAGE GRID ── */
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .image-grid.three {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--cream-dark);
+    }
+
+    .image-grid .span-2 {
+      grid-column: 1 / -1;
+    }
+
+    /* ── OUTCOME CARD ── */
+    .outcome-card {
+      background: var(--charcoal);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .outcome-stat {
+      text-align: center;
+    }
+
+    .outcome-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .outcome-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    /* ── QUOTE ── */
+    .pullquote {
+      margin: 2rem 0;
+      padding: 1.75rem 2rem;
+      border-left: 3px solid var(--teal);
+      background: var(--white);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .pullquote p {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem !important;
+      font-style: italic;
+      color: var(--charcoal) !important;
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      background: var(--white);
+      border-top: 1px solid var(--cream-dark);
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .next-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 1rem;
+    }
+
+    .next-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 0.875rem 2rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ── FADE UP ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      .case-hero { padding: 7rem 1.5rem 0; }
+      .case-content { padding: 0 1.5rem 6rem; }
+      .case-section { grid-template-columns: 1fr; gap: 1rem; }
+      .before-after { grid-template-columns: 1fr; }
+      .image-grid { grid-template-columns: 1fr; }
+      .image-grid.three { grid-template-columns: 1fr; }
+      .outcome-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .next-project { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Isa Montes Diaz</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="experiments.html">AI & Experiments</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Say hello</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <a href="index.html" class="back-link">Back to work</a>
+    <p class="case-eyebrow">Case Study · Fidelity Investments</p>
+    <h1>We replaced a PowerPoint with a <em>board game</em> for 180 people.</h1>
+    <p class="case-tagline">Fidelity's Workplace Innovation team needed something memorable for their annual summit. Four months, one fully illustrated game, and at least one person still using the cards at their desk.</p>
+
+    <div class="meta-row">
+      <div class="meta-pill">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">Fidelity Investments</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Timeline</span>
+        <span class="meta-value">4 months</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">My Role</span>
+        <span class="meta-value">UX, Illustration, Facilitation</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Tools</span>
+        <span class="meta-value">Illustrator, InDesign</span>
+      </div>
+      <div class="meta-pill">
+        <span class="meta-label">Scale</span>
+        <span class="meta-value">180 participants</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="case-hero">
+    <div class="hero-image">
+      <!--
+        REPLACE src with: assets/fidelity-flatlay.jpg
+        Use Image 2 from your uploads — the board game flat lay on the table
+      -->
+      <img
+        src="assets/fidelity-flatlay.jpg"
+        alt="Hop-Portunity board game flat lay"
+      />
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="case-content">
+
+    <!-- THE PROBLEM -->
+    <div class="case-section fade-up">
+      <p class="section-label">The Problem</p>
+      <div class="case-body">
+        <h2>A 180-person summit was getting a PowerPoint.</h2>
+        <p>Every year, Fidelity's Workplace Innovation team gathered their people for a summit of executives, designers, and project managers all in one room. And every year, the format was the same: a presentation and a group worksheet.</p>
+        <p>The ask was vague but exciting: <strong>do something fun and interesting.</strong> The real challenge underneath that? How do you hold the attention of 180 people while actually instilling values and behaviors that stick beyond the event?</p>
+
+        <div class="before-after">
+          <div class="ba-card before">
+            <p class="ba-label">Before</p>
+            <div class="ba-item">PowerPoint presentation</div>
+            <div class="ba-item">Group worksheet</div>
+            <div class="ba-item">Passive participation</div>
+            <div class="ba-item">Forgettable content</div>
+          </div>
+          <div class="ba-card after">
+            <p class="ba-label">After</p>
+            <div class="ba-item">Fully illustrated board game</div>
+            <div class="ba-item">Replayable physical assets</div>
+            <div class="ba-item">Active, competitive play</div>
+            <div class="ba-item">Behavior change that stuck</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MY ROLE -->
+    <div class="case-section fade-up">
+      <p class="section-label">My Role</p>
+      <div class="case-body">
+        <h2>UX designer, illustrator, and first-time facilitator.</h2>
+        <p>I owned this project end-to-end. That meant bringing my <strong>game design background</strong> into a professional context for the first time, thinking through how many spaces should be on the board, what the card mechanics should feel like, how to synthesize complex content into something playable.</p>
+        <p>I leaned into Fidelity's existing frog metaphor to build the game's world, which became <strong>Hop-Portunity</strong>, a swamp-themed game where teams navigate financial and workplace challenges together.</p>
+        <p>Most importantly, I designed and facilitated a <strong>pilot test with real clients</strong> before the live event. It was the first time I'd run a client workshop in that capacity, and it's the part of this project I'm most proud of.</p>
+      </div>
+    </div>
+
+    <!-- PROCESS -->
+    <div class="case-section fade-up">
+      <p class="section-label">Process</p>
+      <div class="case-body">
+        <h2>Four months from concept to a room of 180 players.</h2>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Discovery & content synthesis</h4>
+              <p>Worked with the Fidelity team to understand the values and behaviors they wanted to instill. Translated dense content into game mechanics that could live on cards and spaces.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Game design & UX decisions</h4>
+              <p>Made intentional design choices at every level: board size, number of spaces, card types (Finance, Resource, Disruptor), scoring system, frog character system. Every decision tied back to the experience goal.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>Illustration & production</h4>
+              <p>Built the entire visual world in Illustrator: board, cards, game pieces, scoreboard, rulebook, box. Leaned into the Fidelity frog brand metaphor to create a cohesive, lovable aesthetic.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Pilot testing with clients</h4>
+              <p>Facilitated a full pilot workshop before the live event. It was my first time running a client workshop in that capacity, and I used feedback to refine mechanics and timing before the 180-person event.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>Live event execution</h4>
+              <p>Ran the game simultaneously across all tables for 180 participants: executives, designers, and PMs playing together in real time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISUALS -->
+    <div class="case-section fade-up">
+      <p class="section-label">The Work</p>
+      <div class="case-body">
+        <h2>A fully illustrated game world, built from scratch.</h2>
+        <p>Every asset was designed and illustrated in Illustrator, from the board to the box to the live scoreboard screen.</p>
+
+        <div class="image-grid">
+          <!--
+            REPLACE these placeholders:
+            assets/fidelity-board-illustration.png → Image 3 (the full board illustration)
+            assets/fidelity-flatlay.jpg → Image 2 (the flat lay)
+            assets/fidelity-scoreboard.png → the scoreboard image
+            assets/fidelity-venue.jpg → Image 1 (the venue photo)
+          -->
+          <img
+            class="span-2"
+            src="assets/fidelity-board-illustration.jpg"
+            alt="Hop-Portunity full board illustration"
+          />
+          <img
+            src="assets/fidelity-flatlay.jpg"
+            alt="Game pieces flat lay"
+          />
+          <img
+            src="assets/hop-scoreboard.jpg"
+            alt="Live game scoreboard"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="case-section fade-up">
+      <p class="section-label">The Outcome</p>
+      <div class="case-body">
+        <h2>A summit people actually remembered.</h2>
+        <p>The event was a success by every measure: engagement, energy, and execution. But the most meaningful outcome came after the room cleared.</p>
+
+        <div class="pullquote">
+          <p>"At least one person is still using the game cards in their everyday work, months after the event."</p>
+        </div>
+
+        <p>That's the whole point of experience design. Not just a good day, but a <strong>behavior that stuck</strong>. The game did what a PowerPoint never could: it made the content personal, competitive, and memorable.</p>
+
+        <div class="outcome-card">
+          <div class="outcome-stat">
+            <p class="outcome-number">180</p>
+            <p class="outcome-desc">participants playing simultaneously across all tables</p>
+          </div>
+          <div class="outcome-stat">
+            <p class="outcome-number">4mo</p>
+            <p class="outcome-desc">from first brief to live event execution</p>
+          </div>
+          <div class="outcome-stat">
+            <p class="outcome-number">1st</p>
+            <p class="outcome-desc">time facilitating a client pilot workshop independently</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

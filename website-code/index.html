@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isa Montes Diaz, Senior Designer &amp; Strategist</title>
+  <meta name="description" content="Senior Designer & Strategist based in Somerville, MA. Social, web, and print for enterprise brands." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #4BBFB8;
+      --teal-dark:  #2A8C86;
+      --teal-light: #D6F2F0;
+      --olive:      #9A9A6A;
+      --olive-light:#EEEEDD;
+      --cream:      #F5F4EF;
+      --cream-dark: #EAE9E2;
+      --charcoal:   #2C2C2C;
+      --mid:        #5A5A5A;
+      --soft:       #9A9A9A;
+      --white:      #FFFFFF;
+      --radius:     12px;
+      --radius-lg:  20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(245, 244, 239, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(75,191,184,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal-dark); }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 100px !important;
+      font-weight: 500 !important;
+      transition: background 0.2s, transform 0.1s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--teal-dark) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 40%, rgba(75,191,184,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 15% 70%, rgba(154,154,106,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 5rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--teal-dark);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 680px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 0.875rem 2rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      color: var(--mid);
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--charcoal); }
+    .btn-ghost::after { content: '↓'; }
+
+    .hero-photo-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-photo-bg {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-photo {
+      position: relative;
+      width: 300px;
+      height: 380px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 32px 64px rgba(44,44,44,0.12);
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 2rem;
+      right: -1rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      box-shadow: 0 8px 24px rgba(44,44,44,0.1);
+      font-size: 0.78rem;
+      color: var(--mid);
+      max-width: 180px;
+      line-height: 1.4;
+    }
+
+    .hero-badge strong {
+      display: block;
+      color: var(--charcoal);
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 0.4rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 4rem; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── WORK ── */
+    #work { background: var(--white); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: block;
+      border: 1px solid var(--cream-dark);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px rgba(44,44,44,0.1);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: var(--cream-dark);
+    }
+
+    .project-body { padding: 1.5rem; }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      background: var(--cream-dark);
+      color: var(--mid);
+    }
+
+    .tag-teal {
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
+    }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--mid);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-outcome {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--teal-dark);
+      padding: 0.6rem 0.875rem;
+      background: var(--teal-light);
+      border-radius: var(--radius);
+      line-height: 1.5;
+    }
+
+    .project-arrow {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--mid);
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .project-card:hover .project-arrow {
+      color: var(--teal-dark);
+      gap: 0.6rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      aspect-ratio: 3/4;
+      box-shadow: 0 16px 40px rgba(44,44,44,0.1);
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .about-text p strong {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-item {
+      padding: 1rem 1.25rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+    }
+
+    .skill-item .skill-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-item .skill-value {
+      font-size: 0.875rem;
+      color: var(--charcoal);
+      font-weight: 400;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--charcoal);
+      text-align: center;
+    }
+
+    #contact h2 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      padding: 0.875rem 2rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.15s, background 0.2s;
+      display: inline-block;
+    }
+
+    .contact-link:hover { transform: translateY(-2px); }
+
+    .contact-link-primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .contact-link-primary:hover { background: var(--teal-dark); }
+
+    .contact-link-ghost {
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .contact-link-ghost:hover {
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── FADE IN ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      #hero { padding: 7rem 1.5rem 4rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo { width: 220px; height: 280px; }
+      .hero-photo-bg { width: 240px; height: 240px; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">Isa Montes Diaz</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="experiments.html">AI & Experiments</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#contact" class="nav-cta">Say hello</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div>
+        <p class="hero-eyebrow">Senior Designer & Strategist · Open to New Opportunities</p>
+        <h1>I design systems, campaigns, and experiences that are <em>strategic,</em> on-brand, and built to last.</h1>
+        <p class="hero-sub">I'm Isa Montes Diaz, a Senior Designer &amp; Strategist who thinks visually, collaborates closely, and turns complex problems into elegant experiences. I've designed and built for Fidelity, Red Hat, Akamai, Brown Brothers Harriman, and J&amp;J.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">See my work</a>
+          <a href="#contact" class="btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-inner">
+      <p class="section-label fade-up">Selected Work</p>
+      <h2 class="fade-up">Campaigns, systems,<br>and sites that scale</h2>
+      <div class="projects-grid">
+
+        <!-- PROJECT 1: Red Hat Microsites -->
+        <a href="case-study-redhat.html" class="project-card fade-up">
+          <!--
+            REPLACE src with: assets/redhat-hero.jpg
+            Use the personalized executive microsite screenshot
+          -->
+          <img
+            src="assets/redhat-hero.jpg"
+            alt="Red Hat personalized executive microsite"
+            class="project-img"
+          />
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag tag-teal">Web Design</span>
+              <span class="tag">WordPress</span>
+              <span class="tag">Brand Execution</span>
+            </div>
+            <h3 class="project-title">Executive Microsites: Red Hat</h3>
+            <p class="project-desc">150+ executives needed personalized event agendas on the web. We replaced an annual PDF process with one smart WordPress template, fully on-brand, fully scalable, updated instantly.</p>
+            <div class="project-outcome">Triple the executives reached. One template. Zero duplication.</div>
+            <span class="project-arrow">View case study →</span>
+          </div>
+        </a>
+
+        <!-- PROJECT 2: Akamai Foundation Website -->
+        <a href="case-study-akamai.html" class="project-card fade-up" style="transition-delay: 0.1s">
+          <!--
+            REPLACE src with: assets/akamai-foundation-hero.jpg
+            Screenshot of the akamaifoundation.com homepage
+          -->
+          <img
+            src="assets/akamai-foundation-hero.jpg"
+            alt="Akamai Foundation website"
+            class="project-img"
+          />
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag tag-teal">Marketing Site</span>
+              <span class="tag">WordPress</span>
+              <span class="tag">Evergreen</span>
+            </div>
+            <h3 class="project-title">Foundation Website: Akamai</h3>
+            <p class="project-desc">Akamai's foundation site used to be rebuilt every year. I designed and built an evergreen marketing site from scratch, launched March 2026, built to last, and fully on-brand for a global tech company.</p>
+            <div class="project-outcome">From a new site every year to one that grows with the organization.</div>
+            <span class="project-arrow">View case study →</span>
+          </div>
+        </a>
+
+        <!-- PROJECT 3: Fidelity Board Game -->
+        <a href="case-study-fidelity.html" class="project-card fade-up" style="transition-delay: 0.2s">
+          <!--
+            REPLACE src with: assets/fidelity-flatlay.jpg
+          -->
+          <img
+            src="assets/fidelity-flatlay.jpg"
+            alt="Hop-Portunity board game flat lay"
+            class="project-img"
+          />
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag tag-teal">Print Design</span>
+              <span class="tag">Illustration</span>
+              <span class="tag">Fidelity</span>
+            </div>
+            <h3 class="project-title">Hop-Portunity: Fidelity</h3>
+            <p class="project-desc">A fully illustrated, print-ready board game designed for 180 Fidelity employees. Every asset (board, cards, rulebook, scoreboard) built in Illustrator, executed on-brand, delivered in 4 months.</p>
+            <div class="project-outcome">A financial services summit nobody forgot, with behavioral outcomes to prove it.</div>
+            <span class="project-arrow">View case study →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label" style="color: rgba(255,255,255,0.45); margin-bottom: 0.75rem;">Let's Connect</p>
+      <h2>Ready to work<br>with a Senior Designer?</h2>
+      <p class="contact-sub">I'm open to full-time, contract, and freelance opportunities.<br>Say hi. I'd love to hear about it.</p>
+      <div class="contact-links">
+        <a href="mailto:isabellabfdiaz@gmail.com" class="contact-link contact-link-primary">Send me an email</a>
+        <a href="https://linkedin.com/in/isamontesdiaz" target="_blank" rel="noopener" class="contact-link contact-link-ghost">LinkedIn</a>
+        <a href="#" class="contact-link contact-link-ghost">Download Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Isa Montes Diaz</p>
+    <p>Designed & built by me ✦ montesdiazdesign.com</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
